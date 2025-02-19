@@ -1,6 +1,6 @@
 # Azure Hub-Spoke Network with Route Server and NVA
 
-This Terraform configuration creates a hub-spoke network topology in Azure with a Route Server and Network Virtual Appliance (NVA) for centralized routing.
+This Terraform configuration creates a hub-spoke network topology in Azure with a Route Server and Network Virtual Appliance (NVA) for centralized routing. I use a ubuntu server with FRR BGP to mimic instead of using a true 3rd party NVA (Cisco, Palo Alto, etc.)
 
 ## Architecture Diagram
 
