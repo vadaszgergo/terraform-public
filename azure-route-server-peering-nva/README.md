@@ -34,7 +34,7 @@ The infrastructure consists of:
 
 ### Network Peering
 - Bi-directional peering between hub and spokes
-- Gateway transit enabled on hub
+- Gateway forward enabled on hub
 - Remote gateway use enabled on spokes
 
 ### Virtual Machines
