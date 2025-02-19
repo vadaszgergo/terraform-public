@@ -65,6 +65,7 @@ The infrastructure consists of:
 - Terraform installed
 - Azure CLI installed and authenticated
 - SSH key pair at `~/.ssh/id_rsa.pub` for VM access
+- Make sure to have enough time, Azure Route Server might need 15-30 min to be deployed/deleted
 
 ## Usage
 
