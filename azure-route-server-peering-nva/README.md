@@ -115,6 +115,7 @@ sudo vtysh -c 'show ip route bgp'
 - NVA uses ASN 65020
 - All VMs use the same SSH key for access
 - NSGs are configured to allow inbound SSH from any source (0.0.0.0/0)
+- Most of the code was written using AI tools, but the logic/scenario/testing is all mine :) 
 
 ## Clean Up
 
