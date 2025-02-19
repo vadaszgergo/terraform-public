@@ -87,7 +87,7 @@ terraform apply
 
 1. SSH into spoke VMs using their public IPs:
 ```bash
-ssh gergo@<spoke-vm-public-ip>
+ssh admin@<spoke-vm-public-ip>
 ```
 
 2. Test connectivity between spokes (traffic should flow through the NVA):
@@ -99,10 +99,11 @@ ping 10.2.1.4  # spoke2-vm private IP
 3. Verify BGP routes on the NVA:
 ```bash
 # SSH into NVA first
-ssh gergo@<nva-public-ip>
+ssh admin@<nva-public-ip>
 
 # Check BGP status
 sudo vtysh -c 'show ip bgp'
+sudo vtysh -c 'show ip bgp summary'
 sudo vtysh -c 'show ip route bgp'
 ```
 
