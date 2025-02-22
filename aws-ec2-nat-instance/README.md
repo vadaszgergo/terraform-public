@@ -25,3 +25,19 @@ This solution uses a NAT Instance instead of a NAT Gateway, which can be more co
 - Single point of failure (no high availability)
 - Performance limited by EC2 instance type
 - Manual updates required for the NAT instance
+
+## Cloud-Init Configuration
+
+The NAT instance is configured using cloud-init (cloud-init.yml) which sets up the necessary networking rules for NAT functionality:
+
+1. Enables IP forwarding:
+   - Sets `/proc/sys/net/ipv4/ip_forward` to 1
+   - Uncomments `net.ipv4.ip_forward=1` in sysctl.conf
+
+2. Configures IP tables:
+   - Creates `/etc/iptables` directory
+   - Sets up NAT masquerading rule to allow traffic forwarding
+   - Saves iptables rules to persist across reboots
+
+
+These configurations allow the instance to properly forward traffic from private subnets to the internet while maintaining security.
