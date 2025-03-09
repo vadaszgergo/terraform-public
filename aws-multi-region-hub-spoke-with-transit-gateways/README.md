@@ -74,6 +74,16 @@ You can:
 
 ## Prerequisites
 
+### Required Tools
+- Terraform >= 1.0
+- AWS CLI configured with appropriate credentials
+- Access to three AWS regions (eu-west-1, eu-central-1, us-east-1)
+
+### AWS Account Requirements
+- Sufficient privileges to create VPCs, Transit Gateways, and related resources
+- Service quotas for Transit Gateway peering across regions
+- Ability to create resources in all three regions
+
 ### SSH Key Pairs
 Before deploying this infrastructure, you need to have created an SSH key pair in both regions:
 - eu-central-1 (for EU public server)
@@ -98,6 +108,40 @@ resource "aws_instance" "us_spoke_private" {
 ```
 
 **Note:** Make sure you have created the key pair in both regions before deploying, or the deployment will fail.
+
+## Cost Considerations
+
+This architecture involves several billable components across multiple regions:
+
+- Transit Gateway hourly charges (3 regions)
+- Transit Gateway data processing
+- Transit Gateway peering attachment charges
+- NAT Gateway hourly charges
+- NAT Gateway data processing
+- EC2 instance charges
+- VPC data transfer (inter-region)
+- Internet data transfer
+
+Consider implementing AWS Cost Explorer tags to track expenses by component.
+
+## Security Considerations
+
+- All inter-region traffic is encrypted by default through Transit Gateway peering
+- Private subnets have no direct internet access
+- Access to instances is controlled via security groups and NACLs
+- Internet egress is centralized through the hub region for better monitoring
+- Consider implementing AWS Network Firewall in the hub VPC for additional security
+
+## Limitations and Considerations
+
+- Transit Gateway peering increases network latency
+- Cross-region data transfer costs can be significant
+- Single region hub creates a potential bottleneck
+- Consider implementing:
+  - Multi-region hub redundancy
+  - Region-local internet egress for latency-sensitive applications
+  - VPC Flow Logs for network monitoring
+  - AWS Network Firewall for enhanced security
 
 ## Getting Started
 
