@@ -10,6 +10,9 @@ Cost-effective NAT solution using EC2 instance instead of AWS NAT Gateway.
 ### [Multi-Region Hub-Spoke with Transit Gateways](aws-multi-region-hub-spoke-with-transit-gateways/)
 Multi-region network architecture using Transit Gateways for centralized routing.
 
+### [Lambda VPC Outbound with NAT Gateway](aws-lambda-vpc-outbound-with-nat-gateway/)
+Lambda function in VPC with internet access through NAT Gateway.
+
 ## Azure Examples
 
 ### [Free App Service with Docker](azure-free-app-service-with-docker/)
