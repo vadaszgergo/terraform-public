@@ -24,6 +24,7 @@ Hub-spoke network with Azure Route Server and Network Virtual Appliance (NVA) fo
 ## Google Cloud Examples
 
 ### [Google Cloud Network Connectivity Center with Router Appliance](google-cloud-ncc-router-appliance/)
+Hub-spoke network with Google Cloud Network Connectivity Center and Router appliance for BGP routing.
 
 ## Usage
 
