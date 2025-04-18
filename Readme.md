@@ -21,6 +21,10 @@ Deploys a containerized application using Azure's free-tier App Service.
 ### [Route Server with NVA Peering](azure-route-server-peering-nva/)
 Hub-spoke network with Azure Route Server and Network Virtual Appliance (NVA) for BGP routing.
 
+## Google Cloud Examples
+
+### [Google Cloud Network Connectivity Center with Router Appliance](google-cloud-ncc-router-appliance/)
+
 ## Usage
 
 Each folder contains:
