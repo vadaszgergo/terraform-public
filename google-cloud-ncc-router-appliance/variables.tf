@@ -2,7 +2,7 @@ variable "project_id" {
   description = "The Google Cloud project ID."
   type        = string
   # Consider adding your project ID as default or using tfvars
-  default = "your-gcp_projectID" 
+  default = "your_gcp_projectID" 
 }
 
 variable "region" {
