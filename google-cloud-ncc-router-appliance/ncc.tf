@@ -43,7 +43,7 @@ resource "google_network_connectivity_spoke" "router_appliance_spoke" {
     }
     site_to_site_data_transfer = true
   }
-
+# Labels are not necessary
   labels = {
     environment = "testing"
     type        = "router-appliance"
