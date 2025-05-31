@@ -37,7 +37,7 @@ Each folder contains:
 
 - AWS/Azure account
 - Terraform >= 1.0
-- AWS CLI or Azure CLI
+- AWS CLI / Azure CLI / gcloud installed
 - Basic cloud networking knowledge
 
 ## Note
