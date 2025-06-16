@@ -21,6 +21,9 @@ Deploys a containerized application using Azure's free-tier App Service.
 ### [Route Server with NVA Peering](azure-route-server-peering-nva/)
 Hub-spoke network with Azure Route Server and Network Virtual Appliance (NVA) for BGP routing.
 
+### [Azure DevOps Pipeline with Terraform](azure-devops-pipeline-terraform/)
+Automated infrastructure deployment using Azure DevOps pipelines and Terraform, including VM provisioning and network setup.
+
 ## Google Cloud Examples
 
 ### [Google Cloud Network Connectivity Center with Router Appliance](google-cloud-ncc-router-appliance/)
