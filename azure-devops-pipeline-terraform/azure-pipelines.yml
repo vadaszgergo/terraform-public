@@ -1,0 +1,86 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+# This is the trigger event, where we define what initiates our automation
+# In our case, modification (direct edit or merge) into the main branch
+trigger:
+  branches:
+    include:
+      - main
+
+pr: none
+
+# This is my own server pool, where the agent is running
+# Terraform will be running here
+pool: own-server-pool
+
+
+# These are variables to reference an existing storage account
+# where we will store our Terraform state file
+variables:
+  resourcegroup: 'RG1'
+  accountname: 'tfstateazuredevopsforme'
+  containername: 'terraformcontainer'
+  key: 'tfstatealter'
+
+# We define 2 stages in our pipeline. Validate and Deploy
+# Deploy can only run once Validate has run without an error
+stages:
+  - stage: tfvalidate
+    jobs:
+      - job: validate
+        continueOnError: false
+        steps:
+          - task: TerraformInstaller@1
+            displayName: install
+            inputs:
+              terraformVersion: 'latest'
+          - task: TerraformTaskV4@4
+            displayName: init
+            inputs:
+              provider: 'azurerm'
+              command: 'init'
+              backendServiceArm: 'service-conn-azure'
+              backendAzureRmResourceGroupName: '$(resourcegroup)'
+              backendAzureRmStorageAccountName: '$(accountname)'
+              backendAzureRmContainerName: '$(containername)'
+              backendAzureRmKey: '$(key)'
+          - task: TerraformTaskV4@4
+            displayName: validate
+            inputs:
+              provider: 'azurerm'
+              command: 'validate'
+  - stage: tfdeploy
+    condition: succeeded('tfvalidate')
+    dependsOn: tfvalidate
+    jobs:
+      - job: apply
+        steps:
+          - task: TerraformInstaller@1
+            displayName: install
+            inputs:
+              terraformVersion: 'latest'
+          - task: TerraformTaskV4@4
+            displayName: init
+            inputs:
+              provider: 'azurerm'
+              command: 'init'
+              backendServiceArm: 'service-conn-azure'
+              backendAzureRmResourceGroupName: '$(resourcegroup)'
+              backendAzureRmStorageAccountName: '$(accountname)'
+              backendAzureRmContainerName: '$(containername)'
+              backendAzureRmKey: '$(key)'
+          - task: TerraformTaskV4@4
+            displayName: plan
+            inputs:
+              provider: 'azurerm'
+              command: 'plan'
+              environmentServiceNameAzureRM: 'service-conn-azure'
+          - task: TerraformTaskV4@4
+            displayName: apply
+            inputs:
+              provider: 'azurerm'
+              command: 'apply'
+              environmentServiceNameAzureRM: 'service-conn-azure'
