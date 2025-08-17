@@ -12,7 +12,7 @@ This Terraform project deploys a minimal hub-spoke network topology on Azure wit
 - **Routing**:
   - Spoke subnets have a default route `0.0.0.0/0` pointing to the Azure Firewall private IP (Virtual Appliance)
   - Explicit route for `1.2.3.4/32` with next hop `Internet` so you can SSH directly from that IP. Replace this with your own public IP.
-- **Firewall rules**: Allow ICMP and TCP 22/80/443 between the two spoke subnets in both directions
+- **Firewall rules**: Allow ICMP and TCP 22/80/443 between the two spoke subnets in both directions, and allow TCP 80/443 from both spokes to the Internet
 - **Test VMs**: One Ubuntu 22.04 VM in each spoke with a public IP, NSG allows SSH and intra-VNet traffic
 
 ### Diagram
@@ -72,6 +72,12 @@ ping 172.16.1.4
 curl -I http://172.16.1.4
 ```
 
+Test outbound Internet via the Firewall (egress SNAT):
+```bash
+# This should print the Azure Firewall public IP
+curl -s ifconfig.me && echo
+```
+
 Note: Replace target private IPs with those assigned in your deployment.
 
 ### Files
@@ -82,15 +88,16 @@ Note: Replace target private IPs with those assigned in your deployment.
 - `spoke1.tf`: Spoke1 VNet, subnet, peering to hub, route table + association
 - `spoke2.tf`: Spoke2 VNet, subnet, peering to hub, route table + association
 - `servers.tf`: NSG, public IPs, NICs, and small Ubuntu VMs in each spoke
-- `firewall_rules.tf`: Azure Firewall network rule collection allowing ICMP and TCP 22/80/443 between spokes
+- `firewall_rules.tf`: Azure Firewall network rule collections allowing ICMP and TCP 22/80/443 between spokes, and allowing TCP 80/443 from spokes to the Internet
 - `outputs.tf`: Useful outputs (firewall IPs, VNet IDs, VM public IPs)
 
 ### Important details
 - The default route `0.0.0.0/0` in both spoke route tables forwards traffic to the Azure Firewall.
 - A specific route for `1.2.3.4/32` with next hop `Internet` is added to both spoke route tables so you can SSH directly from that IP without being hairpinned through the firewall.
   - To change this, update the route named `to-your-public-ip` in `spoke1.tf` and `spoke2.tf`.
-- Azure Firewall rules in `firewall_rules.tf` allow ICMP and TCP 22/80/443 between the two spoke subnets in both directions.
+- Azure Firewall rules in `firewall_rules.tf` allow ICMP and TCP 22/80/443 between the two spoke subnets in both directions, and allow TCP 80/443 from spokes to the Internet.
 - The NSG applied to VM NICs allows SSH from anywhere and intra-VNet traffic.
+- Terraform apply and destroy can take a while to complete, for me it took around 15-20 minutes. 
 
 ### Security notes
 - The VM password is defined in code for demo purposes. For production, use SSH keys, secret management (e.g., Azure Key Vault), and restrict NSG rules to your management IPs.

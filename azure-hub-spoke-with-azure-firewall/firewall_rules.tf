@@ -40,4 +40,23 @@ resource "azurerm_firewall_network_rule_collection" "spoke_to_spoke" {
     destination_ports     = ["*"]
     protocols             = ["ICMP"]
   }
+}
+
+resource "azurerm_firewall_network_rule_collection" "spokes_to_internet" {
+  name                = "${var.prefix}-spokes-to-internet"
+  azure_firewall_name = azurerm_firewall.azfw.name
+  resource_group_name = azurerm_resource_group.rg.name
+  priority            = 200
+  action              = "Allow"
+
+  rule {
+    name                  = "spokes-to-internet-web"
+    source_addresses      = [
+      azurerm_subnet.spoke1_subnet.address_prefixes[0],
+      azurerm_subnet.spoke2_subnet.address_prefixes[0]
+    ]
+    destination_addresses = ["*"]
+    destination_ports     = ["80", "443"]
+    protocols             = ["TCP"]
+  }
 } 
