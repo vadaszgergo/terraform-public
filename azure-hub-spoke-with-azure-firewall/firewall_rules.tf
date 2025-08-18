@@ -61,32 +61,3 @@ resource "azurerm_firewall_network_rule_collection" "spokes_to_internet" {
   }
 }
 
-resource "azurerm_firewall_application_rule_collection" "deny_cnn" {
-  name                = "${var.prefix}-deny-cnn"
-  azure_firewall_name = azurerm_firewall.azfw.name
-  resource_group_name = azurerm_resource_group.rg.name
-  priority            = 100
-  action              = "Deny"
-
-  rule {
-    name             = "deny-cnn"
-    source_addresses = [
-      azurerm_subnet.spoke1_subnet.address_prefixes[0],
-      azurerm_subnet.spoke2_subnet.address_prefixes[0]
-    ]
-
-    protocol {
-      type = "Http"
-      port = 80
-    }
-
-    protocol {
-      type = "Https"
-      port = 443
-    }
-
-    target_fqdns = [
-      "cnn.com"
-    ]
-  }
-} 
