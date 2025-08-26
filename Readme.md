@@ -24,6 +24,9 @@ Hub-spoke network with Azure Route Server and Network Virtual Appliance (NVA) fo
 ### [Azure DevOps Pipeline with Terraform](azure-devops-pipeline-terraform/)
 Automated infrastructure deployment using Azure DevOps pipelines and Terraform, including VM provisioning and network setup.
 
+### [Hub-Spoke with Central Azure Firewall](azure-hub-spoke-with-azure-firewall/)
+Hub-spoke network with a central Azure Firewall for secure traffic inspection and control across spokes.
+
 ## Google Cloud Examples
 
 ### [Google Cloud Network Connectivity Center with Router Appliance](google-cloud-ncc-router-appliance/)
