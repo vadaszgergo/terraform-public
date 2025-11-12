@@ -1,0 +1,8 @@
+cloudflare_zone           = "yourdomain.com"
+cloudflare_zone_id        = "....."
+cloudflare_account_id     = "....."
+cloudflare_email          = "....."
+cloudflare_token          = "....."
+gcp_project_id            = "....."
+zone                      = "europe-west4-a"
+machine_type              = "e2-small"

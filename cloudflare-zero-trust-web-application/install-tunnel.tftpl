@@ -1,0 +1,61 @@
+cd /tmp
+sudo apt update -y 
+
+sudo apt install nginx -y
+
+sudo tee /var/www/html/index.html >/dev/null <<'EOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Greetings from Terraform</title>
+  <style>
+    body { font-family: sans-serif; background: #0f172a; color: #f8fafc; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+    .card { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(148, 163, 184, 0.4); border-radius: 12px; padding: 2.5rem 3rem; text-align: center; box-shadow: 0 20px 40px rgba(15, 23, 42, 0.35); max-width: 420px; }
+    h1 { margin-bottom: 1rem; font-size: 2.2rem; }
+    p { margin: 0.5rem 0; font-size: 1.1rem; }
+    .ip { margin-top: 1.5rem; font-family: "Courier New", Courier, monospace; font-size: 1.3rem; }
+    .loading { opacity: 0.7; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Hello from the Terraform-built server!</h1>
+    <p>Welcome to the demo site provisioned via Cloudflare Zero Trust.</p>
+    <p id="ip" class="ip loading">Detecting your IP address…</p>
+  </div>
+  <script>
+    async function updateIp() {
+      const el = document.getElementById('ip');
+      try {
+        const resp = await fetch('https://api.ipify.org?format=json');
+        if (!resp.ok) throw new Error('Request failed');
+        const data = await resp.json();
+        el.textContent = `Your IP address: $${data.ip}`;
+      } catch (err) {
+        el.textContent = 'Unable to retrieve IP address.';
+      } finally {
+        el.classList.remove('loading');
+      }
+    }
+    updateIp();
+  </script>
+</body>
+</html>
+EOF
+
+# Add cloudflare gpg key
+sudo mkdir -p --mode=0755 /usr/share/keyrings
+curl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/keyrings/cloudflare-main.gpg >/dev/null
+
+# Add this repo to your apt repositories
+# Stable
+echo 'deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/cloudflared any main' | sudo tee /etc/apt/sources.list.d/cloudflared.list
+# Nightly
+echo 'deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://next.pkg.cloudflare.com/cloudflared any main' | sudo tee /etc/apt/sources.list.d/cloudflared.list
+
+# install cloudflared
+sudo apt-get update && sudo apt-get install cloudflared
+sudo cloudflared tunnel run --token ${tunnel_token}
