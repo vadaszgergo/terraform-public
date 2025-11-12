@@ -71,6 +71,7 @@ Destroy all resources (VM, DNS records, tunnel, Access configs):
 ```bash
 terraform destroy
 ```
+Please note, that terraform destroy might not work with all resources right away. Destroying the cloudflared tunnel can take some time if a user was logged into the website. Try the terraform destroy couple of times, after waiting few minutes between each try.
 
 ## Troubleshooting Notes
 - Ensure the VM `network_interface` specifies a valid subnetwork in the selected region; custom-mode VPCs require `subnetwork` instead of only `network`.
