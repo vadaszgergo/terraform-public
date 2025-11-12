@@ -17,7 +17,7 @@ resource "google_compute_instance" "http_server" {
   }
 
 network_interface {
-  subnetwork   = "projects/vadaszgergo/regions/europe-west4/subnetworks/subnet-gergo-01"
+  subnetwork   = "projects/yourprojectid/regions/europe-west4/subnetworks/subnet-for-testing"
   access_config {}
 }
   // Optional config to make instance ephemeral
