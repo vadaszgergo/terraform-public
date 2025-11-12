@@ -20,8 +20,8 @@ This project provisions a demo web application on Google Cloud Platform and expo
 - HashiCorp Google provider credentials (e.g., `gcloud auth application-default login`, service account JSON, or other supported auth)
 - Cloudflare account with:
   - Zone already onboarded (DNS managed by Cloudflare)
-  - API token with permissions: Zero Trust Tunnel, DNS:Edit, Access:Edit, Zero Trust Lists
-- Existing GCP network + subnetwork (`gergo-vpc-01` in the example). Adjust values to match your environment.
+  - API token with permissions
+- Existing GCP network + subnetwork. Adjust values to match your environment.
 - (Optional) `gcloud` CLI for validating networks/subnets.
 
 ## Configuration
