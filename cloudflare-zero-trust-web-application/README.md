@@ -1,4 +1,4 @@
-# Cloudflare Zero Trust Web Application (Terraform)
+# Cloudflare Zero Trust Private Website (Terraform)
 
 This project provisions a demo web application on Google Cloud Platform and exposes it securely through Cloudflare Zero Trust using Terraform. It deploys an Ubuntu VM that installs Nginx and Cloudflared at boot, serves a simple greeting page, and publishes the instance behind a Cloudflare Tunnel with Access policies.
 
