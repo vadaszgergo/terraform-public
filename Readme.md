@@ -2,7 +2,7 @@
 
 Collection of infrastructure-as-code examples using Terraform for AWS, Azure and Google Cloud platforms.
 
-![AWS Logo](images/aws-logo.png)
+<img src="images/aws-logo.png" alt="AWS Logo" align="left">
 
 ## AWS Examples
 
