@@ -32,6 +32,9 @@ Hub-spoke network with a central Azure Firewall for secure traffic inspection an
 ### [Google Cloud Network Connectivity Center with Router Appliance](google-cloud-ncc-router-appliance/)
 Hub-spoke network with Google Cloud Network Connectivity Center and Router appliance for BGP routing.
 
+### [Cloud Run VPC Integration with VPN](google-cloud-cloud-run-vpc-integration/)
+Cloud Run service with direct VPC egress and VPN tunnel integration for on-premises connectivity.
+
 ## Cloudflare Examples
 
 ### [Cloudflare Zero Trust Private Web Application](cloudflare-zero-trust-web-application/)
