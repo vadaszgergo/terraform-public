@@ -2,9 +2,10 @@
 
 Collection of infrastructure-as-code examples using Terraform for AWS, Azure and Google Cloud platforms.
 
-
+<br><br>
 
 <img src="images/aws-logo.png" alt="AWS Logo" align="left" width="60">
+
 
 ## AWS Examples
 
@@ -17,10 +18,9 @@ Multi-region network architecture using Transit Gateways for centralized routing
 ### [Lambda VPC Outbound with NAT Gateway](aws-lambda-vpc-outbound-with-nat-gateway/)
 Lambda function in VPC with internet access through NAT Gateway.
 
+<br><br>
+
 <img src="images/azure-logo.png" alt="Azure Logo" align="left" width="40">
-
-
-
 
 ## Azure Examples
 
@@ -36,11 +36,9 @@ Automated infrastructure deployment using Azure DevOps pipelines and Terraform, 
 ### [Hub-Spoke with Central Azure Firewall](azure-hub-spoke-with-azure-firewall/)
 Hub-spoke network with a central Azure Firewall for secure traffic inspection and control across spokes.
 
+<br><br>
+
 <img src="images/gcp-logo.png" alt="Google Cloud Logo" align="left" width="40">
-
-
-
-
 
 ## Google Cloud Examples
 
