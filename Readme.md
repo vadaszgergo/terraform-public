@@ -1,6 +1,8 @@
 # Cloud Infrastructure Examples
 
-Collection of infrastructure-as-code examples using Terraform for AWS and Azure cloud platforms.
+Collection of infrastructure-as-code examples using Terraform for AWS, Azure and Google Cloud platforms.
+
+![AWS Logo](images/aws-logo.png)
 
 ## AWS Examples
 
