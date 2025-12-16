@@ -1,0 +1,18 @@
+# Copy this file to terraform.tfvars and fill in your values
+
+project_id = "your-gcp-project-id"
+
+# Optional: Override defaults if needed
+# region = "europe-west4"
+# vpc_name = "cloud-run-vpc"
+# subnet_name = "cloud-run-subnet"
+# subnet_cidr = "10.12.1.0/24"
+# cloud_run_service_name = "cloudrun-service"
+# vpn_gateway_name = "vpn-gateway"
+# vpn_tunnel_name = "vpn-tunnel"
+# vpn_remote_ip = "1.1.1.1"
+# shared_secret = "password1234"  # Default is "password1234", override if needed
+# route_name = "vpn-route"
+# route_dest_range = "15.0.0.0/24"  # Destination CIDR for on-premises network
+# route_priority = 1000
+
