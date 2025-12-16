@@ -48,6 +48,10 @@ Hub-spoke network with Google Cloud Network Connectivity Center and Router appli
 ### [Cloud Run VPC Integration with VPN](google-cloud-cloud-run-vpc-integration/)
 Cloud Run service with direct VPC egress and VPN tunnel integration for on-premises connectivity.
 
+<br><br>
+
+<img src="images/cloudflare-logo.png" alt="Cloudflare Logo" align="left" width="40">
+
 ## Cloudflare Examples
 
 ### [Cloudflare Zero Trust Private Web Application](cloudflare-zero-trust-web-application/)
