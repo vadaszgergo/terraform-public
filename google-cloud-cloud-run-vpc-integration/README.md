@@ -65,7 +65,7 @@ This Terraform module creates:
 - `cloud_run_service_name` (optional, default: "cloudrun-service"): Name of the Cloud Run service
 - `vpn_gateway_name` (optional, default: "vpn-gateway"): Name of the VPN gateway
 - `vpn_tunnel_name` (optional, default: "vpn-tunnel"): Name of the VPN tunnel
-- `vpn_remote_ip` (optional, default: "91.189.63.246"): Remote IP address for the VPN tunnel
+- `vpn_remote_ip` (optional, default: "1.1.1.1"): Remote IP address for the VPN tunnel
 - `shared_secret` (optional, default: "password1234"): Shared secret for the VPN tunnel
 - `route_dest_range` (optional, default: "192.168.1.0/24"): Destination CIDR range for VPN route
 - `cloud_run_image` (optional): Container image for Cloud Run service
