@@ -75,4 +75,3 @@ Each folder contains:
 ## Note
 These configurations may create cloud resources that incur costs. Remember to destroy resources after testing.
 
-For more detailed articles about cloud networking and infrastructure, visit [gergovadasz.hu](https://gergovadasz.hu)
