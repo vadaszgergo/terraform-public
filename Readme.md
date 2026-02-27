@@ -20,6 +20,9 @@ Multi-region network architecture using Transit Gateways for centralized routing
 ### [Lambda VPC Outbound with NAT Gateway](aws-lambda-vpc-outbound-with-nat-gateway/)
 Lambda function in VPC with internet access through NAT Gateway.
 
+### [Route Server for NVA Failover](aws-route-server-for-nva-failover/)
+AWS route server-based design for Network Virtual Appliance (NVA) failover.
+
 <br><br>
 
 <img src="images/azure-logo.png" alt="Azure Logo" align="left" width="40">
@@ -74,4 +77,3 @@ Each folder contains:
 
 ## Note
 These configurations may create cloud resources that incur costs. Remember to destroy resources after testing.
-
