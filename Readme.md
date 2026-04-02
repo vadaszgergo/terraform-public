@@ -53,6 +53,9 @@ Hub-spoke network with Google Cloud Network Connectivity Center and Router appli
 ### [Cloud Run VPC Integration with VPN](google-cloud-cloud-run-vpc-integration/)
 Cloud Run service with direct VPC egress and VPN tunnel integration for on-premises connectivity.
 
+### [NCC Hybrid DNS with BIND](google-cloud-ncc-hybrid-dns/)
+Hybrid DNS setup using NCC, Cloud DNS peering/forwarding, and a BIND VM to avoid Google's public source IPs when resolving on-prem domains.
+
 <br><br>
 
 <img src="images/cloudflare-logo.png" alt="Cloudflare Logo" align="left" width="40">
