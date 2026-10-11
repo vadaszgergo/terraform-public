@@ -58,6 +58,8 @@ Hybrid DNS setup using NCC, Cloud DNS peering/forwarding, and a BIND VM to avoid
 
 <br><br>
 
+<img src="images/multicloud-logo.png" alt="Multicloud Logo" align="left" width="40">
+
 ## Multicloud Examples
 
 ### [AWS to Azure Multicloud Interconnect](aws-azure-multicloud-interconnect/)
