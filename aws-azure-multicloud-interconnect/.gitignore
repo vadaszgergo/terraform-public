@@ -1,0 +1,15 @@
+# Local Terraform working directory (provider binaries)
+.terraform/
+
+# State files - contain account IDs and the interconnect activation key
+*.tfstate
+*.tfstate.*
+.terraform.tfstate.lock.info
+
+# Local variable values (your own IP etc.)
+terraform.tfvars
+*.auto.tfvars
+
+# Crash logs and macOS noise
+crash.log
+.DS_Store

@@ -58,6 +58,13 @@ Hybrid DNS setup using NCC, Cloud DNS peering/forwarding, and a BIND VM to avoid
 
 <br><br>
 
+## Multicloud Examples
+
+### [AWS to Azure Multicloud Interconnect](aws-azure-multicloud-interconnect/)
+Private connectivity between an AWS VPC and an Azure VNET using AWS Interconnect - multicloud and Azure Multicloud Interconnect (ExpressRoute), with a test VM on each side.
+
+<br><br>
+
 <img src="images/cloudflare-logo.png" alt="Cloudflare Logo" align="left" width="40">
 
 ## Cloudflare Examples

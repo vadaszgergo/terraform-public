@@ -1,0 +1,9 @@
+# Copy this file to terraform.tfvars and adjust the values.
+
+# Source CIDR allowed to SSH into the VMs - set this to your own public IP
+my_ssh_source_cidr = "203.0.113.10/32"
+
+# Optional overrides (defaults are in variables.tf)
+# prefix            = "awsazure"
+# azure_vm_size     = "Standard_D2as_v4"
+# aws_instance_type = "t3.micro"
