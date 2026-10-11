@@ -176,7 +176,7 @@ Both security groups already allow all traffic from the other cloud's address sp
 terraform destroy
 ```
 
-The destroy also takes a while because of the ExpressRoute gateway. Do not leave the lab running unattended - see costs below.
+The destroy also takes a while because of the ExpressRoute gateway. Destroy the lab when you are done testing.
 
 **Expect to run it twice.** The first destroy removes everything except the Azure circuit and its resource group, and ends with this error on the circuit:
 
@@ -184,16 +184,8 @@ The destroy also takes a while because of the ExpressRoute gateway. Do not leave
 ConflictError: The current operation could not be executed because it is already in progress.
 ```
 
-Azure is still deprovisioning its side of the interconnect when Terraform tries to delete the circuit. Wait a few minutes, then run `terraform destroy` again to remove the last two resources. Nothing billable is left in between - the circuit is free during the preview.
+Azure is still deprovisioning its side of the interconnect when Terraform tries to delete the circuit. Wait a few minutes, then run `terraform destroy` again to remove the last two resources.
 
-## Costs
-
-- **Interconnect:** no charge on either side during the preview.
-- **Azure ExpressRoute gateway:** billed per hour for as long as it exists. This is the main cost of the lab.
-- **VMs and public IPs:** billed per hour on both sides.
-- **AWS Direct Connect gateway and virtual private gateway:** no charge.
-
-Check current pricing before deploying, and destroy the lab when you are done.
 
 ## Troubleshooting
 
@@ -211,7 +203,7 @@ Check current pricing before deploying, and destroy the lab when you are done.
 
 - `terraform.tfstate` contains the activation key in plain text. Do not commit state files or `terraform.tfvars` to a public repository.
 - Both ASNs (`aws_dxgw_asn`, `aws_vgw_asn`) must stay outside 65515-65520, which Microsoft reserves.
-- A virtual private gateway is used on the AWS side because it is free and enough for a single VPC. For several VPCs, attach the Direct Connect gateway to a Transit Gateway instead.
+- A virtual private gateway is used on the AWS side because it is enough for a single VPC. For several VPCs, attach the Direct Connect gateway to a Transit Gateway instead.
 
 ## References
 
