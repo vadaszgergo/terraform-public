@@ -6,17 +6,15 @@ No VPN tunnels, no colocation, no third-party network provider.
 
 ## Architecture
 
-```
-AWS eu-central-1 (Frankfurt)                         Azure germanywestcentral (Frankfurt)
+<img src="aws-azure-interconnect.drawio.png" alt="AWS to Azure Multicloud Interconnect architecture: an EC2 VM in AWS eu-central-1 reaches an Azure VM in germanywestcentral through a virtual private gateway, Direct Connect gateway, the automated Direct Connect - ExpressRoute cross-connect, and an ExpressRoute gateway" width="520">
 
-VPC 10.20.0.0/16                                     VNET 10.10.0.0/16
-  subnet 10.20.1.0/24                                  vm-subnet 10.10.1.0/24
-    Ubuntu VM                                            Ubuntu VM
-       |                                                    |
-Virtual private gateway                              ExpressRoute gateway (GatewaySubnet 10.10.255.0/27)
-       |                                                    |
-Direct Connect gateway  ---  AWS Interconnect  ===  ExpressRoute circuit (MultiCloud SKU)
-```
+Address space used in the lab:
+
+| | AWS (eu-central-1) | Azure (germanywestcentral) |
+|---|---|---|
+| Network | VPC `10.20.0.0/16` | VNET `10.10.0.0/16` |
+| VM subnet | `10.20.1.0/24` | `10.10.1.0/24` |
+| Gateway subnet | - | `GatewaySubnet` `10.10.255.0/27` |
 
 ## What gets created
 
